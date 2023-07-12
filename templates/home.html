@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Home</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src='main.js'></script>
+    <style>h1{text-align: center;}
+        h3{text-align: center;}
+        table{border-collapse: collapse; width: 100%;}
+        td,th{ padding: 8px ; text-align: left; border-bottom: 1px solid #ddd;}
+        tr:hover{background-color: bisque;}
+        p{color: rgb(86, 98, 106);}
+        th{ color: darkgreen;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">
+                <h1 style="color: coral;">BMI CALCULATOR</h1>
+                <br/>
+            </h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <h2 style="color:cadetblue">Indiviual Records</h2>
+                <hr>
+                {% if data | length==0 %}
+                <p> 
+                    No records found . Add the records now !
+                </p>
+            
+                {% else %}
+
+                <table id="all-records">
+                    <tr>
+                        <th>S.no</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Weight(kg)</th>
+                        <th>Height(cm)</th>
+                        <th>Email</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for row in data %}
+                    <tr>
+                        <td> <a href="/record/{{row['id']}}">{{loop.index}}</a></td>
+                        <td>{{row['f_name']}}</td>
+                        <td>{{row['l_name']}}</td>
+                        <td>{{row['age']}}</td>
+                        <td>{{row['gender']}}</td>
+                        <td>{{row['weight']}}</td>
+                        <td>{{row['height']}}</td>
+                        <td>{{row['email']}}</td>
+                        <td> <a href="/record/{{row['id']}}/update">Update</a></td>
+                        <td> <a href="/record/{{row['id']}}/delete">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                   
+                </table>
+                {% endif %}
+                <div>
+                    <br/>
+                    <br/>
+                    <a href ="/record/create"><h3>+ Add Records</h3></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h2 style="color:cadetblue" style="text-align:center;">What is BMI</h2>
+                <hr>
+                <p>Body Mass Index (BMI) is a person’s weight in kilograms (or pounds) divided by the square of 
+                    height in meters (or feet). A high BMI can indicate high body fatness. BMI screens for weight 
+                    categories that may lead to health problems, but it does not diagnose the body fatness or 
+                    health of an individual.</p>
+
+                <p>BMI is a measurement that takes into account your height, and weight to produce a calculation.
+                    This calculation is a measurement of your body size and can be used to determine how your body
+                    weight is related to your height .It is a method of determining whether you may be underweight,
+                    average weight, overweight, or obese, but it has flaws.</p>
+
+                <p>BMI is not a diagnostic tool nor is it a measurement of body fat percentage. A high BMI may or 
+                    may not be an indicator of high body fat, but it doesn't necessarily mean that a person is 
+                    overweight or obese and it alone is not a direct indicator of health.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

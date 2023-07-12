@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Add Records</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <form action="/record/create" method="POST" id="add-records">
+        <div>
+            <label>First Name <a style="color: tomato;">*</a></label>
+            <input type="text" name="fname" required />
+        </div>
+        <div>
+            <label>Last Name </label>
+            <input typ="text" name="lname" />
+        </div>
+        <div>
+            <label>Age<a style="color: tomato;">*</a></label>
+            <input typ="integer" name="agee" required />
+        </div>
+        <div>
+            <label>Gender</label>
+            <select name="genderr" id="genderr">
+                {% for a in gen %}
+                <option value="{{a}}">{{a}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label>Weight(kg)<a style="color: tomato;">*</a></label>
+            <input typ="text" name="weightt" required />
+        </div>
+        <div>
+            <label>Height<a style="color: tomato;">*</a></label>
+            <input typ="text" name="heightt" required />
+        </div>
+        <div>
+            <label>Email</label>
+            <input typ="text" name="emaill" />
+        </div>
+        <div>
+            <input type="submit" value = "Submit">
+        </div>
+    </form>
+    <div>
+        <br/>
+        <br/>
+        <h3 style="text-align: center;"><a href="/">Home</a></h3>
+    </div>
+</body>
+</html>
